@@ -12,7 +12,8 @@ def main():
     """
     Plays notification sound if either a class is added or the number of students enrolled in any class changes
     """
-    PATH = "/Users/alexyuwen/myasu-webscraper/chromedriver"
+    # PATH = "/Users/alexyuwen/myasu-webscraper/chromedriver"
+    PATH = "./chromedriver"
     driver = webdriver.Chrome(PATH)
     driver.get("https://webapp4.asu.edu/catalog/classlist?t=2207&hon=F&promod=F&e=open&page=1")
     sleep(4)  # wait for page to load since MyASU's class search page can be buggy sometimes
@@ -64,10 +65,14 @@ def updateCoursesList(driver, courses, initialized=True):
         if classNum not in courses:
             courses[classNum] = seatsOpen
             if initialized:
-                print("Either a new course has been added or a new spot for an existing course has opened.")
+                print("\n----------------------------------------------------------------------------------------------")
+                print("\nEither a new course has been added or a new spot for an existing course has opened.")
+                print("\n----------------------------------------------------------------------------------------------\n")
                 call(["afplay", "notification_sound.wav"])  # play notification sound
         elif courses.setdefault(classNum, seatsOpen) != seatsOpen and initialized:
+            print("\n----------------------------------------------------------------------------------------------")
             print(f"The number of open seats in {teacher}'s section has changed from {courses[classNum]} to {seatsOpen}.")
+            print("\n----------------------------------------------------------------------------------------------\n")
             call(["afplay", "notification_sound.wav"])  # play notification sound
             courses[classNum] = seatsOpen
 
@@ -77,7 +82,7 @@ def updateCoursesList(driver, courses, initialized=True):
         #     i += 1
         #     print(f"{i:4}| {cell.text}")
 
-    # print(courses)
+   # print(list(courses.values()))
 
 
 if __name__ == "__main__":
