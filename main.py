@@ -12,7 +12,6 @@ def main():
     """
     Plays notification sound if either a class is added or the number of students enrolled in any class changes
     """
-    # PATH = "/Users/alexyuwen/myasu-webscraper/chromedriver"
     PATH = "./chromedriver"
     driver = webdriver.Chrome(PATH)
     driver.get("https://webapp4.asu.edu/catalog/classlist?t=2207&hon=F&promod=F&e=open&page=1")
