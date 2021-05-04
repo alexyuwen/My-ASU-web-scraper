@@ -7,3 +7,6 @@ For example, to monitor CSE 340 for 24 hours (1440 minutes), the command would b
 ```
 python3 main.py CSE 340 1440
 ```
+
+# Usage
+You may need to download the latest version of ChromeDriver here: https://chromedriver.chromium.org/downloads.  Download the one that matches your Chrome version and your operating system.  Then replace the `chromedriver` file with your download, naming the new file `chromedriver`.
